@@ -1,0 +1,10 @@
+{
+    "login-title":"Login Page",
+    "email-label":"enter your email",
+    "password-label":"enter your password",
+    "have-account":"don't have account?",
+    "login-button":"login",
+    "sign-up":"sign-up",
+    "email":"email",
+    "password":"password"
+}

@@ -1,0 +1,13 @@
+{
+    "signup-title":"signup page",
+    "name":"name",
+    "email-label":"enter your email",
+    "name-label":"enter your name",
+    "password-label":"enter your password",
+    "have-account":"already have account?",
+    "signup-button":"signup",
+    "login":"login",
+    "email":"email",
+    "password":"password",
+    "confirm-password":"confirm-password"
+}

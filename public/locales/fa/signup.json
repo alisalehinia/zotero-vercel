@@ -1,0 +1,13 @@
+{
+    "signup-title":"صفحه ثبت نام",
+    "email-label":"ایمیل خود را وارد کنید",
+    "name":"نام",
+    "name-label":"نام خود را وارد کنید",
+    "password-label":"پسورد خود را وارد کنید",
+    "have-account":"حساب کاربری دارید؟",
+    "signup-button":"ثبت نام",
+    "login":"ورود",
+    "email":"ایمیل",
+    "password":"پسورد",
+    "confirm-password":"تایید پسورد"
+}
