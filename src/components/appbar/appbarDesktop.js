@@ -6,6 +6,7 @@ import Actions from "./actions";
 import Link from "next/link";
 import Button from '@mui/material/Button';
 import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/router";
 
 
 
@@ -17,7 +18,11 @@ export default function AppbarDesktop({ matches, darkMode, toggleTheme }) {
 
     const { user } = useAuth();
 
+    const router = useRouter();
 
+    // Access the current URL
+    const currentUrl = router.asPath;
+    console.log(currentUrl);
 
     return (
         <AppbarContainer>
@@ -25,12 +30,12 @@ export default function AppbarDesktop({ matches, darkMode, toggleTheme }) {
                 Zotero
             </AppbarHeader>
             <MyList type="row">
-                <Link href="/">
+                {currentUrl !== "/" && <Link href="/">
                     <ListItemText primary="Home" sx={{ cursor: "pointer" }} />
-                </Link>
-                <Link href="/app">
+                </Link>}
+                {currentUrl !== "/app" && <Link href="/app">
                     <ListItemText primary="App" sx={{ cursor: "pointer" }} />
-                </Link>
+                </Link>}
                 {!user && <> <Link href="/login">
                     <ListItemText sx={{ cursor: "pointer" }} primary="Login" />
                 </Link>
@@ -43,7 +48,7 @@ export default function AppbarDesktop({ matches, darkMode, toggleTheme }) {
             </MyList>
             <DarkModeSwitch checked={darkMode} sx={{ m: 1 }} onChange={toggleTheme} value={darkMode} />
             <Actions matches={matches} />
-        </AppbarContainer>
+        </AppbarContainer >
     )
 }
 
