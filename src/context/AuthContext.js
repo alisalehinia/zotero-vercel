@@ -28,7 +28,7 @@ const asyncActionHandlers = {
                 console.log(res.data.token);
                 window.localStorage.setItem('token', res.data.token);
                 dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.data })
-                Router.push("/")
+                Router.push("/app");
             }).catch((err) => {
                 dispatch({ type: "SIGNIN_REJECT", error: err?.response?.data?.message })
                 // toast.error(err?.response?.data?.message)
@@ -52,9 +52,17 @@ const asyncActionHandlers = {
     LOAD_USER: ({ dispatch }) =>
         (action) => {
             dispatch({ type: "SIGNIN_PENDING" })
-            http.get("/users/me").then((res) => {
+            const token = localStorage.getItem("token")
+
+            // Set the Authorization header with the token
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}` // Assuming it's a Bearer token
+                }
+            };
+            http.get("/users/me", config).then((res) => {
                 console.log(res);
-                window.localStorage.setItem('token', res.data.token);
+                // window.localStorage.setItem('token', res.data.token);
                 dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.data })
             }).catch((err) => {
                 console.log("load user ", err);
@@ -67,6 +75,7 @@ const asyncActionHandlers = {
                 console.log(response);
                 // console.log(data.data);
                 window.location.href = "/";
+                localStorage.removeItem("token")
                 console.log("log ----------------- out");
             }).catch((err) => {
                 console.log(err);
@@ -80,6 +89,9 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         dispatch({ type: "LOAD_USER" })
+        if (!user) {
+            dispatch({ type: "LOAD_USER" })
+        }
     }, [dispatch])
     return (
         <AuthContext.Provider value={user}>

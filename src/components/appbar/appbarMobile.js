@@ -16,9 +16,6 @@ export default function AppbarMobile({ matches }) {
             <AppbarHeader textAlign="center" variant="h4">
                 LOGO
             </AppbarHeader>
-            <IconButton>
-                <SearchRounded onClick={() => setShowSearchBox(true)} />
-            </IconButton>
             <Actions matches={matches} />
         </AppbarContainer>
     )

@@ -49,7 +49,15 @@ export default function AppDrawer({ darkMode, toggleTheme }) {
                     }
                     <ListItemButton>
                         <ListItemText>
-                            Home
+
+                            <Link href="/">Home</Link>
+                        </ListItemText>
+                    </ListItemButton>
+                    <MiddleDivider />
+                    <ListItemButton>
+                        <ListItemText>
+
+                            <Link href="/app">App</Link>
                         </ListItemText>
                     </ListItemButton>
                     <MiddleDivider />

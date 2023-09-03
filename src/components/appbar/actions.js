@@ -116,12 +116,7 @@ export default function Actions({ matches }) {
                     </Link>
                 </MenuItem>
                 <Divider />
-                <MenuItem onClick={handleClose}>
-                    <ListItemIcon>
-                        <Settings fontSize="small" />
-                    </ListItemIcon>
-                    Settings
-                </MenuItem>
+
                 <MenuItem onClick={handleClose}>
                     <ListItemIcon>
                         <Logout fontSize="small" />
