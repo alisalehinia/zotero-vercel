@@ -31,19 +31,19 @@ export default function AppbarDesktop({ matches, darkMode, toggleTheme }) {
             </AppbarHeader>
             <MyList type="row">
                 {currentUrl !== "/" && <Link href="/">
-                    <ListItemText primary="Home" sx={{ margin: "1px", cursor: "pointer" }} />
+                    <ListItemText primary="Home" sx={{ margin: "3px", cursor: "pointer" }} />
                 </Link>}
                 {currentUrl !== "/app" && <Link href="/app">
-                    <ListItemText primary="App" sx={{ margin: "1px", cursor: "pointer" }} />
+                    <ListItemText primary="App" sx={{ margin: "3px", cursor: "pointer" }} />
                 </Link>}
                 {!user && <> <Link href="/login">
-                    <ListItemText sx={{ margin: "1px", cursor: "pointer" }} primary="Login" />
+                    <ListItemText sx={{ margin: "3px", cursor: "pointer" }} primary="Login" />
                 </Link>
                     <Link href="/signup">
-                        <ListItemText sx={{ margin: "1px", cursor: "pointer" }} primary="Signup" />
+                        <ListItemText sx={{ margin: "3px", cursor: "pointer" }} primary="Signup" />
                     </Link> </>}
                 <Link href="/groups">
-                    <ListItemText sx={{ margin: "1px", cursor: "pointer" }} primary="Groups" />
+                    <ListItemText sx={{ margin: "3px", cursor: "pointer" }} primary="Groups" />
                 </Link>
             </MyList>
             <DarkModeSwitch checked={darkMode} sx={{ m: 1 }} onChange={toggleTheme} value={darkMode} />
