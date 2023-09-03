@@ -23,9 +23,11 @@ const asyncActionHandlers = {
     SIGNIN: ({ dispatch }) =>
         (action) => {
             dispatch({ type: "SIGNIN_PENDING" })
-            http.post("/users/login", action.payload).then(({ data }) => {
+            http.post("/users/login", action.payload).then((res) => {
                 toast.success("خوش امدید");
-                dispatch({ type: "SIGNIN_SUCCESS", payload: data.data })
+                console.log(res.data.token);
+                window.localStorage.setItem('token', res.data.token);
+                dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.data })
                 Router.push("/")
             }).catch((err) => {
                 dispatch({ type: "SIGNIN_REJECT", error: err?.response?.data?.message })
@@ -35,10 +37,12 @@ const asyncActionHandlers = {
     SIGNUP: ({ dispatch }) =>
         (action) => {
             dispatch({ type: "SIGNIN_PENDING" })
-            http.post("/users/signup", action.payload).then(({ data }) => {
-                console.log(data);
+            http.post("/users/signup", action.payload).then((res) => {
+                // console.log("headers:", res);
+                // console.log("sign up data", res.data);
+                window.localStorage.setItem('token', res.data.token);
                 toast.success("ثبت نام با موفقیت انجام شد");
-                dispatch({ type: "SIGNIN_SUCCESS", payload: data.data })
+                dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.data })
                 Router.push("/")
             }).catch((err) => {
                 dispatch({ type: "SIGNIN_REJECT", error: err?.response?.data?.message })
@@ -48,10 +52,12 @@ const asyncActionHandlers = {
     LOAD_USER: ({ dispatch }) =>
         (action) => {
             dispatch({ type: "SIGNIN_PENDING" })
-            http.get("/users/me").then(({ data }) => {
-                console.log(data);
-                dispatch({ type: "SIGNIN_SUCCESS", payload: data.data })
+            http.get("/users/me").then((res) => {
+                console.log(res);
+                window.localStorage.setItem('token', res.data.token);
+                dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.data })
             }).catch((err) => {
+                console.log("load user ", err);
                 dispatch({ type: "SIGNIN_REJECT", error: err?.response?.data?.message })
             })
         },
@@ -71,6 +77,7 @@ const asyncActionHandlers = {
 }
 const AuthProvider = ({ children }) => {
     const [user, dispatch] = useReducerAsync(reducer, initialState, asyncActionHandlers);
+
     useEffect(() => {
         dispatch({ type: "LOAD_USER" })
     }, [dispatch])
