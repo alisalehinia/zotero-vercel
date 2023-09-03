@@ -14,7 +14,7 @@ export default function AppbarMobile({ matches }) {
                 <MenuRounded />
             </IconButton>
             <AppbarHeader textAlign="center" variant="h4">
-                LOGO
+                zotero
             </AppbarHeader>
             <Actions matches={matches} />
         </AppbarContainer>
