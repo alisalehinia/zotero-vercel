@@ -15,12 +15,15 @@ export const AppbarContainer = styled(Box)(({ theme }) => ({
 }))
 
 //header
-export const AppbarHeader = styled(Typography)(() => ({
+export const AppbarHeader = styled(Typography)(({ theme }) => ({
     padding: "4px",
     flexGrow: 1,
     fontSize: "3.5em",
     fontFamily: '"Montez", "cursive"',
     color: Colors.secondary,
+    [theme.breakpoints.down("md")]: {
+        display: "none"
+    }
 }))
 
 // list
