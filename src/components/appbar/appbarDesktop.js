@@ -26,9 +26,7 @@ export default function AppbarDesktop({ matches, darkMode, toggleTheme }) {
 
     return (
         <AppbarContainer>
-            <AppbarHeader>
-                Zotero
-            </AppbarHeader>
+
             <MyList type="row">
                 {currentUrl !== "/" && <Link href="/">
                     <ListItemText primary="Home" sx={{ cursor: "pointer" }} />
@@ -40,7 +38,7 @@ export default function AppbarDesktop({ matches, darkMode, toggleTheme }) {
                     <ListItemText sx={{ cursor: "pointer" }} primary="Login" />
                 </Link>
                     <Link href="/signup">
-                        <ListItemText sx={{ cursor: "pointer" }} primary="Sign up" />
+                        <ListItemText sx={{ cursor: "pointer" }} primary="Signup" />
                     </Link> </>}
                 <Link href="/groups">
                     <ListItemText sx={{ cursor: "pointer" }} primary="Groups" />
