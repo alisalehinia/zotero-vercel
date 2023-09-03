@@ -21,9 +21,9 @@ export const AppbarHeader = styled(Typography)(({ theme }) => ({
     fontSize: "3.5em",
     fontFamily: '"Montez", "cursive"',
     color: Colors.secondary,
-    [theme.breakpoints.down("md")]: {
-        display: "none"
-    }
+    // [theme.breakpoints.down("md")]: {
+    //     display: "none"
+    // }
 }))
 
 // list
