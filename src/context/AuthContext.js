@@ -28,6 +28,7 @@ const asyncActionHandlers = {
                 console.log(res.data.token);
                 window.localStorage.setItem('token', res.data.token);
                 dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.data })
+                window.location.href = "/app";
                 Router.push("/app");
             }).catch((err) => {
                 dispatch({ type: "SIGNIN_REJECT", error: err?.response?.data?.message })
