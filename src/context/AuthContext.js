@@ -24,7 +24,7 @@ const asyncActionHandlers = {
         (action) => {
             dispatch({ type: "SIGNIN_PENDING" })
             http.post("/users/login", action.payload).then((res) => {
-                toast.success("خوش امدید");
+                toast.success("welcome back");
                 console.log(res.data.token);
                 window.localStorage.setItem('token', res.data.token);
                 dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.data })
@@ -42,7 +42,7 @@ const asyncActionHandlers = {
                 // console.log("headers:", res);
                 // console.log("sign up data", res.data);
                 window.localStorage.setItem('token', res.data.token);
-                toast.success("ثبت نام با موفقیت انجام شد");
+                toast.success("sign up success");
                 dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.data })
                 Router.push("/")
             }).catch((err) => {
